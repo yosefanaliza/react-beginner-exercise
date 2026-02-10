@@ -1,0 +1,283 @@
+/* =============================================================================
+   APP STYLES - App.css
+   =============================================================================
+   All component styles for the Student Dashboard exercise.
+   Kept in a single file for simplicity since this is a learning project.
+   ============================================================================= */
+
+/* ---- App Container ---- */
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- Header ---- */
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+.app-subtitle {
+  color: #6b7280;
+  font-size: 1rem;
+}
+
+/* ---- Stats Bar ---- */
+.stats-bar {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  flex: 1;
+  min-width: 120px;
+  background: white;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.stat-number {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+/* ---- Student Grid ---- */
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2.5rem;
+}
+
+/* ---- Card Component (children wrapper) ---- */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+/* ---- Student Card ---- */
+.student-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.student-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+/* ---- Status Badge (Online / Offline) ---- */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Conditional styling: online = green, offline = gray */
+.status-badge.online {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.offline {
+  background-color: #f3f4f6;
+  color: #6b7280;
+}
+
+/* Small dot indicator before the status text */
+.status-badge::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-badge.online::before {
+  background-color: #22c55e;
+}
+
+.status-badge.offline::before {
+  background-color: #9ca3af;
+}
+
+/* ---- Student Details ---- */
+.student-details {
+  margin-bottom: 1rem;
+}
+
+.student-info {
+  font-size: 0.95rem;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ---- Grade Badge (Pass / Fail) ---- */
+.grade-badge {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Conditional styling: pass = green, fail = red */
+.grade-badge.pass {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.grade-badge.fail {
+  background-color: #fef2f2;
+  color: #dc2626;
+}
+
+/* ---- Honor Roll (conditional rendering with &&) ---- */
+.honor-roll {
+  color: #d97706;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+}
+
+/* ---- Subject List ---- */
+.subject-list {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+.subject-list-title {
+  font-size: 0.8rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.subject-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.subject-tag {
+  display: inline-block;
+  background-color: #eef2ff;
+  color: #4338ca;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ---- Footer ---- */
+.app-footer {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.app-footer h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 0.75rem;
+}
+
+.concepts-list {
+  list-style: none;
+  padding: 0;
+}
+
+.concepts-list li {
+  padding: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #374151;
+  border-bottom: 1px solid #f0f0f0;
+  line-height: 1.6;
+}
+
+.concepts-list li:last-child {
+  border-bottom: none;
+}
+
+.concepts-list strong {
+  color: #4f46e5;
+}
+
+/* ---- Responsive adjustments ---- */
+@media (max-width: 640px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .student-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-bar {
+    gap: 0.5rem;
+  }
+
+  .stat {
+    min-width: 0;
+    padding: 0.75rem;
+  }
+
+  .stat-number {
+    font-size: 1.4rem;
+  }
+}

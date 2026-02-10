@@ -1,0 +1,27 @@
+/* =============================================================================
+   GLOBAL STYLES - index.css
+   =============================================================================
+   Base styles that apply to the entire application.
+   This file is imported in main.tsx so it loads before any component CSS.
+   ============================================================================= */
+
+/* CSS Reset and base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  color: #1a1a2e;
+  background-color: #f0f2f5;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
