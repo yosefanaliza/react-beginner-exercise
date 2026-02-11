@@ -21,14 +21,13 @@
 // =============================================================================
 
 import { useState } from "react";
-import { students as studentsData } from "./data/students";
+import { students } from "./data/students";
 import { StudentCard } from "./components/StudentCard";
 import "./App.css";
 
 type Filter = "all" | "online" | "honor";
 
 function App() {
-  const [students] = useState(studentsData);
   const [activeFilter, setActiveFilter] = useState<Filter>("all");
 
   const filteredStudents = students.filter((s) => {
