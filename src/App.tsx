@@ -20,17 +20,23 @@
 //   │   │   └── SubjectList (iterates over subjects array)
 // =============================================================================
 
-import { students } from "./data/students";
+import { useState } from "react";
+import { students as studentsData } from "./data/students";
 import { StudentCard } from "./components/StudentCard";
 import "./App.css";
 
-/**
- * App component - the main entry point of our React application.
- *
- * It imports the students array and maps over it to render a
- * StudentCard for each student.
- */
+type Filter = "all" | "online" | "honor";
+
 function App() {
+  const [students] = useState(studentsData);
+  const [activeFilter, setActiveFilter] = useState<Filter>("all");
+
+  const filteredStudents = students.filter((s) => {
+    if (activeFilter === "online") return s.isOnline;
+    if (activeFilter === "honor") return s.grade >= 90;
+    return true;
+  });
+
   return (
     <div className="app">
       {/* Page header */}
@@ -42,24 +48,33 @@ function App() {
         </p>
       </header>
 
-      {/* Summary statistics - demonstrates using array methods on data */}
+      {/* Summary statistics - each stat is a filter button */}
       <div className="stats-bar">
-        <div className="stat">
+        <button
+          className={`stat ${activeFilter === "all" ? "active" : ""}`}
+          onClick={() => setActiveFilter("all")}
+        >
           <span className="stat-number">{students.length}</span>
           <span className="stat-label">Total Students</span>
-        </div>
-        <div className="stat">
+        </button>
+        <button
+          className={`stat ${activeFilter === "online" ? "active" : ""}`}
+          onClick={() => setActiveFilter("online")}
+        >
           <span className="stat-number">
             {students.filter((s) => s.isOnline).length}
           </span>
           <span className="stat-label">Online Now</span>
-        </div>
-        <div className="stat">
+        </button>
+        <button
+          className={`stat ${activeFilter === "honor" ? "active" : ""}`}
+          onClick={() => setActiveFilter("honor")}
+        >
           <span className="stat-number">
             {students.filter((s) => s.grade >= 90).length}
           </span>
           <span className="stat-label">Honor Roll</span>
-        </div>
+        </button>
         <div className="stat">
           <span className="stat-number">
             {Math.round(
@@ -71,23 +86,9 @@ function App() {
         </div>
       </div>
 
-      {/* Student cards grid */}
-      {/*
-        RENDERING VIA ITERATION:
-        We use .map() to transform each student object in the array
-        into a <StudentCard /> component.
-
-        For each student, we:
-          1. Pass the student object as a prop (student={student})
-          2. Set a unique "key" prop (key={student.id})
-
-        The "key" prop is CRITICAL for React's reconciliation algorithm.
-        It helps React know which items changed, were added, or removed.
-        Always use a stable, unique identifier (like an ID) as the key.
-        Avoid using array index as key when the list can reorder.
-      */}
+      {/* Student cards grid - filtered by active filter */}
       <main className="student-grid">
-        {students.map((student) => (
+        {filteredStudents.map((student) => (
           <StudentCard key={student.id} student={student} />
         ))}
       </main>

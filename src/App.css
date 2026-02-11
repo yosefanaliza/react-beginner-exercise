@@ -46,6 +46,28 @@
   padding: 1rem 1.25rem;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border: none;
+  font-family: inherit;
+}
+
+button.stat {
+  cursor: pointer;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+button.stat:hover {
+  background-color: #eef2ff;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.15);
+}
+
+button.stat.active {
+  background-color: #4f46e5;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+button.stat.active .stat-number,
+button.stat.active .stat-label {
+  color: white;
 }
 
 .stat-number {
