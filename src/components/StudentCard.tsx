@@ -40,13 +40,14 @@ import { SubjectList } from "./SubjectList";
  */
 interface StudentCardProps {
   student: Student;
+  onToggleOnline: (id: number) => void;
 }
 
 /**
  * StudentCard component - displays a single student's information
  * with conditional rendering for status, grades, and achievements.
  */
-export function StudentCard({ student }: StudentCardProps) {
+export function StudentCard({ student, onToggleOnline }: StudentCardProps) {
   // Destructure the student object for easier access to individual fields.
   // This is a JavaScript feature, not React-specific.
   const { name, age, grade, isOnline, subjects } = student;
@@ -70,9 +71,12 @@ export function StudentCard({ student }: StudentCardProps) {
           If isOnline is true, show "Online" with green styling.
           If isOnline is false, show "Offline" with gray styling.
         */}
-        <span className={`status-badge ${isOnline ? "online" : "offline"}`}>
+        <button
+          className={`status-badge ${isOnline ? "online" : "offline"}`}
+          onClick={() => onToggleOnline(student.id)}
+        >
           {isOnline ? "Online" : "Offline"}
-        </span>
+        </button>
       </div>
 
       {/* ---- BODY: Student details ---- */}

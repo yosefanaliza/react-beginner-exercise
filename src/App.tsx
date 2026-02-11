@@ -21,14 +21,21 @@
 // =============================================================================
 
 import { useState } from "react";
-import { students } from "./data/students";
+import { students as studentsData } from "./data/students";
 import { StudentCard } from "./components/StudentCard";
 import "./App.css";
 
 type Filter = "all" | "online" | "honor";
 
 function App() {
+  const [students, setStudents] = useState(studentsData);
   const [activeFilter, setActiveFilter] = useState<Filter>("all");
+
+  const toggleOnline = (id: number) => {
+    setStudents((prev) =>
+      prev.map((s) => (s.id === id ? { ...s, isOnline: !s.isOnline } : s))
+    );
+  };
 
   const filteredStudents = students.filter((s) => {
     if (activeFilter === "online") return s.isOnline;
@@ -88,7 +95,7 @@ function App() {
       {/* Student cards grid - filtered by active filter */}
       <main className="student-grid">
         {filteredStudents.map((student) => (
-          <StudentCard key={student.id} student={student} />
+          <StudentCard key={student.id} student={student} onToggleOnline={toggleOnline} />
         ))}
       </main>
 

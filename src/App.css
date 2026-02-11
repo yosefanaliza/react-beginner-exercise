@@ -133,6 +133,14 @@ button.stat.active .stat-label {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.status-badge:hover {
+  opacity: 0.75;
 }
 
 /* Conditional styling: online = green, offline = gray */
