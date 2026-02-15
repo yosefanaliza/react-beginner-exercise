@@ -1,4 +1,4 @@
-import { Student } from "../data/students";
+import type { Student } from "../data/students";
 import { StudentCard } from "./StudentCard";
 
 interface StudentGridProps {

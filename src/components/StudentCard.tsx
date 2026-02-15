@@ -48,6 +48,7 @@ interface StudentCardProps {
  * with conditional rendering for status, grades, and achievements.
  */
 export function StudentCard({ student, onToggleOnline }: StudentCardProps) {
+
   // Destructure the student object for easier access to individual fields.
   // This is a JavaScript feature, not React-specific.
   const { name, age, grade, isOnline, subjects } = student;
