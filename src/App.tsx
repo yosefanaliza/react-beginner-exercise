@@ -1,28 +1,6 @@
-// =============================================================================
-// APP COMPONENT - App.tsx
-// =============================================================================
-//
-// This is the ROOT component of our application. It is the top of the
-// component tree. Everything else is rendered inside this component.
-//
-// CONCEPTS DEMONSTRATED:
-//   1. Importing and using data (the students array)
-//   2. Rendering a LIST via iteration (.map())
-//   3. Passing PROPS to child components
-//   4. Component composition (App -> StudentCard -> Card + SubjectList)
-//
-// COMPONENT TREE:
-//   App
-//   ├── StudentCard (for each student in the array)
-//   │   ├── Card (wrapper using children prop)
-//   │   │   ├── Student header (name + online status)
-//   │   │   ├── Student details (age, grade, honor roll)
-//   │   │   └── SubjectList (iterates over subjects array)
-// =============================================================================
-
 import { useState } from "react";
 import { students as studentsData } from "./data/students";
-import { StudentCard } from "./components/StudentCard";
+import { StudentGrid } from "./components/StudentGrid";
 import "./App.css";
 
 type Filter = "all" | "online" | "honor";
@@ -93,11 +71,7 @@ function App() {
       </div>
 
       {/* Student cards grid - filtered by active filter */}
-      <main className="student-grid">
-        {filteredStudents.map((student) => (
-          <StudentCard key={student.id} student={student} onToggleOnline={toggleOnline} />
-        ))}
-      </main>
+      <StudentGrid students={filteredStudents} onToggleOnline={toggleOnline} />
 
       {/* Footer with concept reference */}
       <footer className="app-footer">
